@@ -3,11 +3,6 @@
     padding: 0;
 }
  
-/*
-#comentarioCounter {
-    px;
-}
-    */
 
 body.dark-mode {
     background-color: #121212;
@@ -47,3 +42,23 @@ footer p{
 	font-style: oblique;
 	
 }
+
+.error-message {
+    color: red;
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.error {
+    border: 2px solid red;
+}
+
+input.error {
+    border: 2px solid red;
+}
+
+textarea.error {
+    border: 2px solid red;
+}
+
+

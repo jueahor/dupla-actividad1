@@ -27,9 +27,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
 document.getElementById('contactForm').addEventListener('submit', function (event) {
     event.preventDefault();
+
     const nombre = document.getElementById('nombre').value;
     const comentario = document.getElementById('comentario').value;
     const email = document.getElementById('email').value;
+
+    const nombreError = document.getElementById('nombreError');
+    const emailError = document.getElementById('emailError');
+    const comentarioError = document.getElementById('comentarioError');
+
+    // Esconder los mensajes de ayuda
+    document.getElementById('nombreHelp').style.display = 'none';
+    document.getElementById('emailHelp').style.display = 'none';
+    document.getElementById('comentarioHelp').style.display = 'none';
+
+    nombreError.textContent = '';
+    emailError.textContent = '';
+    comentarioError.textContent = '';
+
+    document.getElementById('nombre').classList.remove('error');
+    document.getElementById('email').classList.remove('error');
+    document.getElementById('comentario').classList.remove('error');
 
     // Expresión regular para verificar que el nombre solo contenga letras
     const nombreRegex = /^[A-Za-z\s]+$/;
@@ -37,17 +55,39 @@ document.getElementById('contactForm').addEventListener('submit', function (even
     // Expresión regular para verificar que el email sea válido
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!nombre || !comentario || !email) {
-        alert('Todos los campos son obligatorios.');
+    let isValid = true;
+
+    if (!nombre) {
+        nombreError.textContent = 'El nombre es obligatorio.';
+        document.getElementById('nombre').classList.add('error');
+        isValid = false;
     } else if (!nombreRegex.test(nombre)) {
-        alert('El nombre solo puede contener letras.');
-     } else if (!emailRegex.test(email)) {
-            alert('El email no es válido.');
+        nombreError.textContent = 'El nombre solo puede contener letras.';
+        document.getElementById('nombre').classList.add('error');
+        isValid = false;
+    }
+
+    if (!email) {
+        emailError.textContent = 'El email es obligatorio.';
+        document.getElementById('email').classList.add('error');
+        isValid = false;
+    } else if (!emailRegex.test(email)) {
+        emailError.textContent = 'El email no es válido.';
+        document.getElementById('email').classList.add('error');
+        isValid = false;
+    }
+
+    if (!comentario) {
+        comentarioError.textContent = 'El comentario es obligatorio.';
+        document.getElementById('comentario').classList.add('error');
+        isValid = false;
     } else if (comentario.length > 300) {
-        alert('El comentario no puede exceder los 300 caracteres.');
-    } else {
+        comentarioError.textContent = 'El comentario no puede exceder los 300 caracteres.';
+        document.getElementById('comentario').classList.add('error');
+        isValid = false;
+    }
+
+    if (isValid) {
         alert('Formulario enviado correctamente.');
     }
 });
-
-                                                        

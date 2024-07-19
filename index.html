@@ -98,18 +98,24 @@
                 <label for="nombre">Nombre</label>
                 <input type="text" class="form-control" id="nombre" aria-labelledby="nombre">
                 <small id="nombreHelp" class="form-text text-muted">Ingrese su nombre.</small>
-            </div>
+                <span id="nombreError" class="error-message"></span>
+                <br>
+              </div>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" aria-labelledby="email">
                 <small id="emailHelp" class="form-text text-muted">Ingrese su email.</small>
+                <span id="emailError" class="error-message"></span>
+                <br>
             </div>
           <div class="form-group">
                 <label for="comentario">Comentario</label>
                  <textarea class="form-control" id="comentario" aria-labelledby="comentario" rows="4" placeholder="Ingresa tu comentario"></textarea>               
                 <small id="comentarioCounter" class="form-text text-muted">Te quedan 300 caracteres.</small>
                 <small id="comentarioHelp" class="form-text text-muted">Ingrese su comentario.</small>
-            </div>            
+                <span id="comentarioError" class="error-message"></span>
+                <br>
+              </div>            
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
     </section>
